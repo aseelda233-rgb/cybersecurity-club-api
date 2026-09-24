@@ -2,11 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\EventController;
@@ -15,17 +10,6 @@ use App\Http\Controllers\CommitteeController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-Route::get('/students', [StudentController::class, 'Apiindex']);
-Route::apiResource('posts', PostController::class);
-Route::apiResource('categories', CategoryController::class);
-
-Route::get('products', [ProductController::class, 'index']);
-Route::post('products', [ProductController::class, 'store']);
-Route::get('products/{id}', [ProductController::class, 'show']);
-Route::put('products/{id}', [ProductController::class, 'update']);
-Route::delete('products/{id}', [ProductController::class, 'destroy']);
-Route::apiResource('orders', OrderController::class);
-
 Route::post('register', [App\Http\Controllers\AuthController::class, 'register']);
 Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
